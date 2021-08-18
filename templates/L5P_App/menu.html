@@ -1,0 +1,56 @@
+{% comment "" %}
+
+<div class="row" style="display: inline-block; padding: 10px;">
+<h5>Relative URLs Menu - </h5>
+<a href="/">Home</a> | <a href="{% url 'L4P_App:other' %}">Other</a> | <a href="{% url 'L4P_App:relative' %}">Relative</a> | <a href="{% url 'L4P_App:test' %}">Test One</a> | <a href="{% url 'admin:index' %}">Go 2 Admin Panel</a> | <a href="{% url 'homepage' %}">Go 2 Home Page</a></div>
+{% endcomment %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'homepage' %}">Brand</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'L5P_App:register' %}">Register</a>
+        </li>
+
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'L5P_App:user_login' %}">Login</a>
+          </li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+           <li class="nav-item">
+            <a class="nav-link" href="{% url 'L5P_App:specials' %}">View Specials</a>
+          </li>
+        {% endif %}
+        
+        {% comment "" %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'L4P_App:other' %}">Other Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'L4P_App:test' %}">Test One Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+        {% endcomment %}
+      </ul>
+    </div>
+  </div>
+</nav>

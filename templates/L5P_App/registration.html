@@ -1,0 +1,22 @@
+{% extends 'L5P_App/base.html' %}
+{% load static %}
+
+{% block content_block %}
+
+{% if registered %}
+    <h1>Thank you for registering!</h1>
+{% else %}
+    <h1>Register Here!</h1>
+    <h3>Fill out the form - </h3>
+
+    <form name="registerForm" method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+
+        <input type="submit" name="sub" value="Register">
+    </form>
+
+{% endif %}
+
+{% endblock content_block %}

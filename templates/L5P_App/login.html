@@ -1,0 +1,21 @@
+{% extends 'L5P_App/base.html' %}
+
+{% block content_block %}
+
+<form name="logForm" action="{% url 'L5P_App:user_login' %}" method="post">
+
+    <input type="hidden" name="url_2_fetch" id="url_2_fetch" value="{{ url_2_fetch}}">
+
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="Enter User Name">
+
+    <label for="password">Password:</label>
+    <input type="password" name="password">
+
+    <input type="submit" value="Login">
+
+{% csrf_token %}
+</form>
+
+{% endblock content_block %}
+
